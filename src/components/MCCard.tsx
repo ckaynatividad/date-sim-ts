@@ -1,31 +1,32 @@
-import React from "react";
-import { Choices } from "../utils/stuff";
+import { userInfo } from "os";
+import React, { useEffect, useState } from "react";
+import { MC } from "../utils/stuff";
+import { getUser } from "../utils/utils";
 
-type MC = {
-  name: string;
-  score: Score;
-};
+export default function MCCard() {
+  const [user, setUser] = useState<MC | undefined>(undefined);
+  const [loading, setLoading] = useState<boolean>(true);
 
-type Score = {
-  love: number;
-  confidence: number;
-};
-
-export default function MCCard(score: Score) {
-  //   const score: Score = {
-  //     love: 1,
-  //     confidence: 1,
-  //   };
-  const mc: MC = {
-    name: "name",
-    score: score,
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getUser();
+      setUser(data);
+      setLoading(false);
+    };
+    fetchData();
+  }, [loading]);
 
   return (
     <div>
-      <p>{mc.name}</p>
-      <p>love: {mc.score.love}</p>
-      <p>confidence: {mc.score.confidence}</p>
+      {user ? (
+        <div>
+          <p>name: {user.name}</p>
+          <p>love: {user.score.love}</p>
+          <p>confidence: {user.score.confidence}</p>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

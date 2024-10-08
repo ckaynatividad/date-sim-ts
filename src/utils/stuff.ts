@@ -1,9 +1,9 @@
-type MC = {
+export type MC = {
   name: string;
   score: Score;
 };
 
-type Score = {
+export type Score = {
   love: number;
   confidence: number;
 };
@@ -14,6 +14,8 @@ type Companion = {
   initialNarratedDialogue: string;
   narratedChoice: Choices;
 };
+
+export type Event = { preventDefault: () => void };
 
 export type Choices = {
   choice1: Choice;
