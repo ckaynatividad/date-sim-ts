@@ -14,7 +14,6 @@ export default function UserForm() {
   const handleSubmit = async (e: Event) => {
     try {
       setUser(formState);
-      console.log("set");
     } catch (error) {
       console.log(`error ${error}`);
     }
