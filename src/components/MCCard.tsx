@@ -4,7 +4,7 @@ import { MC } from "../utils/stuff";
 import { getUser } from "../utils/utils";
 
 export default function MCCard() {
-  const [user, setUser] = useState<MC | undefined>(undefined);
+  const [user, setUser] = useState<MC>();
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {

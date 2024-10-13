@@ -6,6 +6,7 @@ import UserForm from "./components/UserForm";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./views/Home";
 import Map from "./views/Map";
+import Dialogue from "./views/Dialogue";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/map" element={<Map />} />
+          <Route path="/:id" element={<Dialogue />} />
         </Routes>
       </BrowserRouter>
     </div>
