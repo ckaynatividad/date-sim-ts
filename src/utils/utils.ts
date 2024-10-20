@@ -1,4 +1,4 @@
-import { MC, Score } from "./stuff";
+import { Choice, MC, Score } from "./stuff";
 import { Quest } from "./quest-data";
 
 export function setUser(user: MC) {
@@ -20,6 +20,21 @@ export function findQuestById(arr: Quest[], id: string) {
       return quest;
     }
   }
+}
+
+export function findChoiceById(arr: Choice[], id: string) {
+  for (let i = 0; i < arr.length; i++) {
+    const choice = arr[i];
+    if (choice.id === id) {
+      return choice.result;
+    }
+  }
+}
+
+export function score(choiceId: Choice, user: MC) {
+  user.score.love += choiceId.love;
+  user.score.confidence += choiceId.confidence;
+  setUser(user);
 }
 
 export {};

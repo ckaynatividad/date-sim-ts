@@ -8,8 +8,8 @@ export default function MCCard() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await getUser();
+    const fetchData = () => {
+      const data = getUser();
       setUser(data);
       setLoading(false);
     };

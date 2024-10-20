@@ -23,23 +23,23 @@ export type Choices = {
   choice3: Choice;
 };
 
-const choice1: Choice = {
-  name: "fight",
-  choice: "Snap back",
-  result: "Result here",
-  love: 10,
-  confidence: 20,
-};
+// const choice1: Choice = {
+//   name: "fight",
+//   choice: "Snap back",
+//   result: "Result here",
+//   love: 10,
+//   confidence: 20,
+// };
 
-const choices: Choices = {
-  choice1: choice1,
-  choice2: choice1,
-  choice3: choice1,
-};
+// const choices: Choices = {
+//   choice1: choice1,
+//   choice2: choice1,
+//   choice3: choice1,
+// };
 
-type Choice = {
-  name: string;
-  choice: string;
+export type Choice = {
+  description: string;
+  id: string;
   result: string;
   love: number;
   confidence: number;

@@ -3,10 +3,13 @@ import { useParams } from "react-router-dom";
 import DialogueForm from "../components/DialogueForm";
 import quests, { Quest } from "../utils/quest-data";
 import { findQuestById } from "../utils/utils";
+import { Choice } from "../utils/stuff";
+import MCCard from "../components/MCCard";
 
 export default function Dialogue() {
   const { id } = useParams();
   const [quest, setQuest] = useState<Quest>();
+  const [choices, setChoices] = useState<Choice[]>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,6 +17,7 @@ export default function Dialogue() {
       if (id) {
         const data = findQuestById(quests, id);
         setQuest(data);
+        setChoices(data?.choices);
       }
       setLoading(false);
     };
@@ -23,7 +27,12 @@ export default function Dialogue() {
   return (
     <div>
       Dialogue hello
-      {quest ? <DialogueForm quest={quest} /> : "nothing here"}
+      <MCCard />
+      {quest && choices ? (
+        <DialogueForm quest={quest} choices={choices} />
+      ) : (
+        "nothing here"
+      )}
     </div>
   );
 }
